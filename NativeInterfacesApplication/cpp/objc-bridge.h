@@ -8,6 +8,7 @@
 #ifndef objc_bridge_h
 #define objc_bridge_h
 
+#import <NativeInterfacesApplication-Swift.h>
 
 @interface ObjCBridge : NSObject
 
@@ -15,8 +16,8 @@
 - (NSString *) openDatabaseConnection: (NSString *) dbPath;
 - (NSString *) closeDatabaseConnection;
 - (void) setupTestData;
-- (void) getAllUsers;
-- (void) getAllArticles;
+- (NSMutableArray<User*>*) getAllUsers;
+- (NSMutableArray<Article*>*) getAllArticles;
 
 @end
 

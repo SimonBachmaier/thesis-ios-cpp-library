@@ -17,6 +17,8 @@
 		065F634E267A3B3100D9A3E2 /* HelloWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065F634D267A3B3100D9A3E2 /* HelloWorld.cpp */; };
 		065F6351267A408F00D9A3E2 /* objc-bridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 065F6350267A408F00D9A3E2 /* objc-bridge.mm */; };
 		065F6353267A48C200D9A3E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 065F6352267A48C200D9A3E2 /* README.md */; };
+		065F63552680D30500D9A3E2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065F63542680D30500D9A3E2 /* User.swift */; };
+		065F63572680D40C00D9A3E2 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065F63562680D40C00D9A3E2 /* Article.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		065F634F267A3F5800D9A3E2 /* objc-bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "objc-bridge.h"; sourceTree = "<group>"; };
 		065F6350267A408F00D9A3E2 /* objc-bridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "objc-bridge.mm"; sourceTree = "<group>"; };
 		065F6352267A48C200D9A3E2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		065F63542680D30500D9A3E2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		065F63562680D40C00D9A3E2 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 				065F632A267913C300D9A3E2 /* Info.plist */,
 				065F6327267913C300D9A3E2 /* Preview Content */,
 				065F6330267915BC00D9A3E2 /* NativeInterfacesApplication-Bridging-Header.h */,
+				065F63542680D30500D9A3E2 /* User.swift */,
+				065F63562680D40C00D9A3E2 /* Article.swift */,
 			);
 			path = NativeInterfacesApplication;
 			sourceTree = "<group>";
@@ -196,8 +202,10 @@
 			files = (
 				065F6324267913C100D9A3E2 /* ContentView.swift in Sources */,
 				065F6322267913C100D9A3E2 /* NativeInterfacesApplicationApp.swift in Sources */,
+				065F63572680D40C00D9A3E2 /* Article.swift in Sources */,
 				065F6351267A408F00D9A3E2 /* objc-bridge.mm in Sources */,
 				065F6336267A334300D9A3E2 /* HelloWorldWrapper.mm in Sources */,
+				065F63552680D30500D9A3E2 /* User.swift in Sources */,
 				065F634E267A3B3100D9A3E2 /* HelloWorld.cpp in Sources */,
 				065F634C267A3AD400D9A3E2 /* cross-platform-library.cpp in Sources */,
 				065F6346267A39EF00D9A3E2 /* sqlite3.c in Sources */,
@@ -330,6 +338,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NativeInterfacesApplication/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NativeInterfacesApplication/Info.plist;
@@ -354,6 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NativeInterfacesApplication/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NativeInterfacesApplication/Info.plist;

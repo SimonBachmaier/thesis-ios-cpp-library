@@ -19,6 +19,10 @@
             encoding:NSUTF8StringEncoding];
 }
 
+- (int) addOne: (int) x {
+    return cpl::AddOne(x);
+}
+
 - (NSString *) openDatabaseConnection: (NSString *) dbPath {
     std::string msg = "";
     

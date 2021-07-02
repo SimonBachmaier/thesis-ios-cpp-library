@@ -8,20 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    var objCBridge = ObjCBridge();
+    @State var helloMessage = ObjCBridge().helloMessage("Swift");
     @State var articlesText = "";
+    
     var body: some View {
-        Text(ObjCBridge().helloMessage("Swift"))
+        Text(helloMessage ?? "")
             .padding()
         Button(action: {
+            // Run test
+            var testNumber = 0;
+            let t1 = Date().timeIntervalSince1970;
+            for _ in 0...10000000 {
+                testNumber = Int(objCBridge.addOne(Int32(testNumber)));
+            }
+            let t2 = Date().timeIntervalSince1970;
+            helloMessage = "Test took \((t2-t1) * 1000)ms";
+            
+            /*
+             * Connect to database and read data
+             */
             let path = "\(NSHomeDirectory())/Documents/"
             print(path)
-            print(ObjCBridge().openDatabaseConnection("\(path)test.db")!)
+            print(objCBridge.openDatabaseConnection("\(path)test.db")!)
             
-            ObjCBridge().setupTestData()
+            objCBridge.setupTestData()
             
-            let users = ObjCBridge().getAllUsers() as NSArray as! [User]
+            let users = objCBridge.getAllUsers() as NSArray as! [User]
             print("users: \(users.count)")
-            let articles = ObjCBridge().getAllArticles() as NSArray as! [Article]
+            let articles = objCBridge.getAllArticles() as NSArray as! [Article]
             
             for article in articles {
                 for user in users {
@@ -40,9 +55,9 @@ struct ContentView: View {
             articlesText += "---------------------------";
             print(articlesText)
             
-            print(ObjCBridge().closeDatabaseConnection()!)
+            print(objCBridge.closeDatabaseConnection()!)
         }) {
-            Text("Get Articles")
+            Text("Show articles and run test")
         }
         ScrollView() { Text(articlesText) }
     }

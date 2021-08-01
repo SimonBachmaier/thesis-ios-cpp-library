@@ -23,6 +23,10 @@
     return cpl::AddOne(x);
 }
 
+- (int) addOneObjC: (int) x {
+    return x + 1;
+}
+
 - (NSString *) openDatabaseConnection: (NSString *) dbPath {
     std::string msg = "";
     

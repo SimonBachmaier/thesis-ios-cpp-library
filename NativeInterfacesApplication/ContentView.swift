@@ -17,13 +17,34 @@ struct ContentView: View {
             .padding()
         Button(action: {
             // Run test
+            let iterations = 10000000;
             var testNumber = 0;
-            let t1 = Date().timeIntervalSince1970;
-            for _ in 0...10000000 {
+            var t1:TimeInterval, t2:TimeInterval;
+            
+            t1 = Date().timeIntervalSince1970;
+            for _ in 0...iterations {
                 testNumber = Int(objCBridge.addOne(Int32(testNumber)));
             }
-            let t2 = Date().timeIntervalSince1970;
-            helloMessage = "Test took \((t2-t1) * 1000)ms";
+            t2 = Date().timeIntervalSince1970;
+            let cppTime = t2 - t1;
+            
+            testNumber = 0;
+            t1 = Date().timeIntervalSince1970;
+            for _ in 0...iterations {
+                testNumber = Int(objCBridge.addOneObjC(Int32(testNumber)));
+            }
+            t2 = Date().timeIntervalSince1970;
+            let objCTime = t2 - t1;
+            
+            testNumber = 0;
+            t1 = Date().timeIntervalSince1970;
+            for _ in 0...iterations {
+                testNumber = addOneSwift(x: testNumber);
+            }
+            t2 = Date().timeIntervalSince1970;
+            let swiftTime = t2 - t1;
+            
+            helloMessage = "C++ test took \((Int)(cppTime * 1000))ms. ObjC test took \((Int)(objCTime * 1000))ms. Swift test took \((Int)(swiftTime * 1000))ms.";
             
             /*
              * Connect to database and read data
@@ -67,4 +88,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+func addOneSwift (x: Int) -> Int {
+    return x + 1;
 }

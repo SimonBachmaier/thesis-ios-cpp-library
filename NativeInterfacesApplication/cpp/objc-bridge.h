@@ -14,6 +14,7 @@
 
 - (NSString *) helloMessage: (NSString *) from;
 - (int) addOne: (int) x;
+- (int) addOneObjC: (int) x;
 - (NSString *) openDatabaseConnection: (NSString *) dbPath;
 - (NSString *) closeDatabaseConnection;
 - (void) setupTestData;

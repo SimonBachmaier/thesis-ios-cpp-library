@@ -12,14 +12,14 @@
 
 @interface ObjCBridge : NSObject
 
-- (NSString *) helloMessage: (NSString *) from;
-- (int) addOne: (int) x;
-- (int) addOneObjC: (int) x;
-- (NSString *) openDatabaseConnection: (NSString *) dbPath;
-- (NSString *) closeDatabaseConnection;
-- (void) setupTestData;
-- (NSMutableArray<User*>*) getAllUsers;
-- (NSMutableArray<Article*>*) getAllArticles;
++ (NSString *) helloMessage: (NSString *) from;
++ (int) addOne: (int) x;
++ (int) addOneObjC: (int) x;
++ (NSString *) openDatabaseConnection: (NSString *) dbPath;
++ (NSString *) closeDatabaseConnection;
++ (void) setupTestData;
++ (NSMutableArray<User*>*) getAllUsers;
++ (NSMutableArray<Article*>*) getAllArticles;
 
 @end
 

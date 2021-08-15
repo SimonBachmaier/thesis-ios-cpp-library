@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var objCBridge = ObjCBridge();
-    @State var helloMessage = ObjCBridge().helloMessage("Swift");
+    @State var helloMessage = ObjCBridge.helloMessage("Swift"); 
     @State var articlesText = "";
     
     var body: some View {
@@ -23,7 +22,7 @@ struct ContentView: View {
             
             t1 = Date().timeIntervalSince1970;
             for _ in 0...iterations {
-                testNumber = Int(objCBridge.addOne(Int32(testNumber)));
+                testNumber = Int(ObjCBridge.addOne(Int32(testNumber)));
             }
             t2 = Date().timeIntervalSince1970;
             let cppTime = t2 - t1;
@@ -31,7 +30,7 @@ struct ContentView: View {
             testNumber = 0;
             t1 = Date().timeIntervalSince1970;
             for _ in 0...iterations {
-                testNumber = Int(objCBridge.addOneObjC(Int32(testNumber)));
+                testNumber = Int(ObjCBridge.addOneObjC(Int32(testNumber)));
             }
             t2 = Date().timeIntervalSince1970;
             let objCTime = t2 - t1;
@@ -51,13 +50,13 @@ struct ContentView: View {
              */
             let path = "\(NSHomeDirectory())/Documents/"
             print(path)
-            print(objCBridge.openDatabaseConnection("\(path)test.db")!)
+            print(ObjCBridge.openDatabaseConnection("\(path)test.db")!)
             
-            objCBridge.setupTestData()
+            ObjCBridge.setupTestData()
             
-            let users = objCBridge.getAllUsers() as NSArray as! [User]
+            let users = ObjCBridge.getAllUsers() as NSArray as! [User]
             print("users: \(users.count)")
-            let articles = objCBridge.getAllArticles() as NSArray as! [Article]
+            let articles = ObjCBridge.getAllArticles() as NSArray as! [Article]
             
             for article in articles {
                 for user in users {
@@ -76,7 +75,7 @@ struct ContentView: View {
             articlesText += "---------------------------";
             print(articlesText)
             
-            print(objCBridge.closeDatabaseConnection()!)
+            print(ObjCBridge.closeDatabaseConnection()!)
         }) {
             Text("Show articles and run test")
         }

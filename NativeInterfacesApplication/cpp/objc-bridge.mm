@@ -12,22 +12,22 @@
 
 @implementation ObjCBridge
 
-- (NSString *) helloMessage: (NSString *) from {
++ (NSString *) helloMessage: (NSString *) from {
     std::string msg = cpl::HelloMessage([@"Objective C++ and " stringByAppendingString:from].UTF8String);
     return [NSString
             stringWithCString:msg.c_str()
             encoding:NSUTF8StringEncoding];
 }
 
-- (int) addOne: (int) x {
++ (int) addOne: (int) x {
     return cpl::AddOne(x);
 }
 
-- (int) addOneObjC: (int) x {
++ (int) addOneObjC: (int) x {
     return x + 1;
 }
 
-- (NSString *) openDatabaseConnection: (NSString *) dbPath {
++ (NSString *) openDatabaseConnection: (NSString *) dbPath {
     std::string msg = "";
     
     std::string err = "";
@@ -40,7 +40,7 @@
             encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *) closeDatabaseConnection {
++ (NSString *) closeDatabaseConnection {
     std::string msg = "";
     
     cpl::Database& db = cpl::Database::GetInstance();
@@ -52,12 +52,12 @@
             encoding:NSUTF8StringEncoding];
 }
 
-- (void) setupTestData {
++ (void) setupTestData {
     cpl::Database& db = cpl::Database::GetInstance();
     db.SetupTestData();
 }
 
-- (NSMutableArray<User*>*) getAllUsers {
++ (NSMutableArray<User*>*) getAllUsers {
     cpl::Database& db = cpl::Database::GetInstance();
     std::vector<cpl::User> dbUsers;
     db.GetAllUsers(&dbUsers);
@@ -72,7 +72,7 @@
     return users;
 }
 
-- (NSMutableArray<Article*>*) getAllArticles {
++ (NSMutableArray<Article*>*) getAllArticles {
     cpl::Database& db = cpl::Database::GetInstance();
     std::vector<cpl::Article> dbArticles;
     db.GetAllArticles(&dbArticles);
